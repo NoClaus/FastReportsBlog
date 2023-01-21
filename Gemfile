@@ -80,3 +80,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'kaminari'
+gem 'simple_form'
+gem 'slim-rails'

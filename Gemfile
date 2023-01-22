@@ -83,6 +83,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'devise'
 gem 'kaminari'
 gem 'simple_form'
 gem 'slim-rails'

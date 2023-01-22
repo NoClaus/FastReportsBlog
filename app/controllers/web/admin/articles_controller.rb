@@ -1,19 +1,51 @@
 # frozen_string_literal: true
 
 class Web::Admin::ArticlesController < ApplicationController
-  def index; end
+  def index; 
+    @articles = Article.all
+                       .order(created_at: :desc)  
+                       .page(page)
+                       .per(per_page)
+  end
 
-  def show; end
+  def show
+    @article = Article.find_by(params[:id])
+    redirect_to(@link.url)
+  end
 
   def new
     @article = Article.new
   end
 
-  def create; end
+  def create
+    @article = current_user.articles.build article_params
 
-  def destroy; end
+    if @article.save
+      redirect_to @article, notice: t('.success')
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+
+    change_state(@article)
+      if @article.update article_params
+        redirect_to @article, notice: t('.success')
+      else
+        render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy; 
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to admin_root_path
+  end
 
   private
 
-  def article_params; end
+  def article_params
+    params.require(:article).permit(:title, :body, :photo)
+  end
 end

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Web::Admin::ArticlesController < ApplicationController
-  def index
+  def index; 
     @articles = Article.all
-                       .order(created_at: :desc)
+                       .order(created_at: :desc)  
                        .page(page)
                        .per(per_page)
   end
@@ -28,11 +28,12 @@ class Web::Admin::ArticlesController < ApplicationController
   end
 
   def update
+
     change_state(@article)
-    if @article.update article_params
-      redirect_to @article, notice: t('.success')
-    else
-      render :edit, status: :unprocessable_entity
+      if @article.update article_params
+        redirect_to @article, notice: t('.success')
+      else
+        render :edit, status: :unprocessable_entity
     end
   end
 

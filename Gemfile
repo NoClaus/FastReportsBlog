@@ -84,8 +84,10 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'aws-sdk-s3'
 gem 'devise'
 gem 'faker'
 gem 'kaminari'
+gem 'pg'
 gem 'simple_form'
 gem 'slim-rails'

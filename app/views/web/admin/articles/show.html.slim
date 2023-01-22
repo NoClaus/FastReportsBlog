@@ -1,0 +1,9 @@
+p
+  = link_to t('.all'), root_path
+  = ' / '
+h1 = @article.title
+p = simple_format @article.body
+
+.d-flex.justify-content-between.mb-3.mt-1
+  .post-section
+    span = time_ago_in_words @post.created_at

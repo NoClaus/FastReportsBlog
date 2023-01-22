@@ -1,0 +1,11 @@
+h1 = t('.title')
+
+- @articles.each do |article|
+  .card.mb-3
+    .card-header 
+      = link_to acticle.title, post
+    	span.me-2
+        = time_ago_in_words post.created_at
+    .card-body.card-text = post.body.truncate_words(18)
+
+  = paginate @posts

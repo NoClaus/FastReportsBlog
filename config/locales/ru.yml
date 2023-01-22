@@ -1,0 +1,12 @@
+ru:
+  web:
+    articles:
+      form:
+        submit: Создать статью
+      create:
+        success: Статья был успешно создана.
+      show:
+        all: Все статьи
+        sign_in: войдите
+      new:
+        title: Новая статья

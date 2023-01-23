@@ -3,7 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Web::Articles' do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
+  let (:user) { create(:user) }
+  let (:article) { build_stubbed(:article, user: :user)}
+
+  it "" do
+    expect(response).to render_template(:index)
   end
+
+  it "" do
+    expect(response).to render_template(:show)
+  end
+
 end

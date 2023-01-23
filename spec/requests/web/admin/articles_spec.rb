@@ -3,7 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Web::Admin::Articles' do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
+
+  it 'creates Article and redirect to Article page' do
+    get 'admin/article/new'
+
+    expect(response).to render_template(:new)
+
   end
+  
 end

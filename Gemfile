@@ -92,3 +92,5 @@ gem 'kaminari'
 gem 'pg'
 gem 'simple_form'
 gem 'slim-rails'
+
+gem "cssbundling-rails", "~> 1.1"

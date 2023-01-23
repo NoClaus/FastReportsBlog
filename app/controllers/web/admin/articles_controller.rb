@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Web::Admin::ArticlesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index; 
     @articles = Article.all
                        .order(created_at: :desc)  

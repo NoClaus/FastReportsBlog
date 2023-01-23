@@ -48,7 +48,7 @@ gem 'bootsnap', require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem 'image_processing', '~> 1.2'
 
 gem 'nokogiri'
 
@@ -84,7 +84,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "active_storage_validations"
+gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'devise'
 gem 'faker'

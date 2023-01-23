@@ -6,8 +6,8 @@ class Article < ApplicationRecord
   has_one_attached :photo
 
   validates :title, presence: true
-  validates :description, presence: true, length: { minimum: 50 }
+  validates :body, presence: true, length: { minimum: 50 }
   validates :photo,
             size: { less_than_or_equal_to: 5.megabyte },
-            content_type: %i[jpeg jpg png]
+            content_type: %i[png]
 end

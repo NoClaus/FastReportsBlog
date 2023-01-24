@@ -1,11 +1,20 @@
-h1 = t('.title')
+table.table
+  thead
+    tr
+      th = t('.id')
+      th = t('.title')
+      th = t('.edit')
+      th = t('.delite')
+  tbody
+    - @articles.each do |article|
+      tr
+        td = link_to article.id, edit_admin_article_path(article)
+        td = article.title
+        td = link_to, edit_admin_article_path(article)
+        td = link_to link_to admin_article_path(article), method: :delete, data: {confirm: 'Are you sure?'}
 
-- @articles.each do |article|
-  .card.mb-3
-    .card-header 
-      = link_to acticle.title, post
-    	span.me-2
-        = time_ago_in_words post.created_at
-    .card-body.card-text = post.body.truncate_words(18)
-
-  = paginate @posts
+        
+  tfoot
+    tr
+      td colspan=6
+        = paginate @articles

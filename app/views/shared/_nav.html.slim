@@ -3,3 +3,14 @@
     = link_to root_path, class: 'd-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none' do
       span.fs-4 = t(:title)
     ul.nav
+      - if signed_in?
+        li
+          = link_to t('.create_article'), new_admin_article_path, class: 'nav-link link-dark'
+          li.dropdown
+          a#profile.nav-link.link-dark.px-2.dropdown-toggle type="button" data-bs-toggle="dropdown" aria-expanded="true" href="#"
+            i.bi-person-circle.me-1
+          ul.dropdown-menu.dropdown-menu-end aria-labelledby="profile"
+            li
+              h5.dropdown-header = current_user.email
+            .dropdown-divider
+            li = link_to t('.sign_out'), session_path, method: :delete, class: 'dropdown-item'

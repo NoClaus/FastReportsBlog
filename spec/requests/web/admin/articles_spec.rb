@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Web::Admin::Articles' do
   let(:user) { create(:user) }
-  let(:article) { build_stubbed(:article, user: :user) }
+  let(:article) { create(:article) }
 
   describe 'GET /index' do
     before { sign_in user }
@@ -22,7 +22,7 @@ RSpec.describe 'Web::Admin::Articles' do
 
     it 'renders a successful response' do
       get admin_article_url(article)
-      expect(response).to be_successful
+      expect(response).to render_template(:show)
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe 'Web::Admin::Articles' do
 
     it 'renders a successful response' do
       get new_admin_article_url
-      expect(response).to be_successful
+      expect(response).to render_template(:new)
     end
   end
 
@@ -49,47 +49,44 @@ RSpec.describe 'Web::Admin::Articles' do
 
     context 'with valid parameters' do
       it 'creates a new Article' do
-        expect do
-          post admin_articles_url, params: { article: valid_attributes }
-        end.to change(Article, :count).by(1)
+        expect {
+          post admin_articles_url, params: { article: attributes_for(:article) }
+        }.to change(Article, :count).by(1)
       end
 
       it 'redirects to the created article' do
-        post articles_url, params: { article: valid_attributes }
-        expect(response).to redirect_to(article_url(Article.last))
+        post admin_articles_url, params: { article: attributes_for(:article) }
+        expect(response).to redirect_to(admin_root_path)
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new Article' do
         expect do
-          post articles_url, params: { article: invalid_attributes }
+          post admin_articles_url, params: { article: attributes_for(:article, :invalid) }
         end.not_to change(Article, :count)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post articles_url, params: { article: invalid_attributes }
-        expect(response).to be_successful
+        post admin_articles_url, params: { article: attributes_for(:article, :invalid) }
+        expect(response).to render_template(:new)
       end
     end
   end
 
   describe 'PATCH /update' do
     before { sign_in user  }
+    
 
     context 'with valid parameters' do
-      let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
-      end
-
+      let(:article) { create(:article) }
       it 'updates the requested article' do
-        patch article_url(article), params: { article: new_attributes }
+        patch admin_article_url(article), params: { article: attributes_for(:article, :new_attributes) }
         article.reload
-        skip('Add assertions for updated state')
       end
 
       it 'redirects to the article' do
-        patch admin_article_url(article), params: { article: new_attributes }
+        patch admin_article_url(article), params: { article: attributes_for(:article, :new_attributes) }
         article.reload
         expect(response).to redirect_to(article_url(article))
       end
@@ -98,7 +95,7 @@ RSpec.describe 'Web::Admin::Articles' do
     context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
  
-        patch admin_article_url(article), params: { article: invalid_attributes }
+        patch admin_article_url(article), params: { article: attributes_for(:article, :invalid) }
         expect(response).to be_successful
       end
     end
@@ -106,11 +103,12 @@ RSpec.describe 'Web::Admin::Articles' do
 
   describe 'DELETE /destroy' do
     before { sign_in user  }
-
+    let!(:article) { create(:article) }
     it 'destroys the requested article' do
-      expect do
+    
+      expect {
         delete admin_article_url(article)
-      end.to change(Article, :count).by(-1)
+      }.to change(Article, :count).by(-1)
     end
 
     it 'redirects to the articles list' do

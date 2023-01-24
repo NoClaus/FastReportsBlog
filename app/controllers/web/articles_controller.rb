@@ -9,6 +9,5 @@ class Web::ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by(params[:id])
-    redirect_to(@link.url)
   end
 end

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Web::Articles' do
   let(:user) { create(:user) }
-  let(:article) { build_stubbed(:article, user: :user) }
+  let(:article) { build_stubbed(:article) }
 
   describe 'GET /index' do
     it 'renders a successful response' do

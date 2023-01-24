@@ -11,7 +11,6 @@ class Web::Admin::ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by(params[:id])
-    redirect_to admin_article_path
   end
 
   def new
@@ -22,18 +21,23 @@ class Web::Admin::ArticlesController < ApplicationController
     @article = current_user.articles.build article_params
 
     if @article.save
-      redirect_to @article, notice: t('.success')
+      redirect_to admin_root_path, notice: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def update
-    change_state(@article)
+    @article = Article.find(params[:id])
+
     if @article.update article_params
       redirect_to @article, notice: t('.success')
     else
-      render :edit, status: :unprocessable_entity
+      render :edit
     end
   end
 

@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    title Быстрые Отчеты | Блог
+
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  body.d-flex.flex-column.h-100
+    = render 'shared/nav'
+    = render 'shared/flash'
+    main.mt-sm-2.mb-2.pb-2
+      .container
+        = yield

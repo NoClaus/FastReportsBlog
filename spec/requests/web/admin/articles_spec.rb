@@ -7,6 +7,8 @@ RSpec.describe 'Web::Admin::Articles' do
   let(:article) { build_stubbed(:article, user: :user) }
 
   describe 'GET /index' do
+    before { sign_in user }
+
     let(:articles) { create_list(:aticles, 5) }
 
     it 'renders a successful response' do
@@ -16,6 +18,8 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'GET /show' do
+    before { sign_in user }
+
     it 'renders a successful response' do
       get admin_article_url(article)
       expect(response).to be_successful
@@ -23,6 +27,8 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'GET /new' do
+    before { sign_in user }
+
     it 'renders a successful response' do
       get new_admin_article_url
       expect(response).to be_successful
@@ -30,6 +36,8 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'GET /edit' do
+    before { sign_in user }
+
     it 'render a successful response' do
       get edit_admin_article_url(article)
       expect(response).to be_successful
@@ -37,6 +45,8 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'POST /create' do
+    before { sign_in user  }
+
     context 'with valid parameters' do
       it 'creates a new Article' do
         expect do
@@ -65,6 +75,8 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'PATCH /update' do
+    before { sign_in user  }
+
     context 'with valid parameters' do
       let(:new_attributes) do
         skip('Add a hash of attributes valid for your model')
@@ -93,6 +105,8 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'DELETE /destroy' do
+    before { sign_in user  }
+
     it 'destroys the requested article' do
       expect do
         delete admin_article_url(article)

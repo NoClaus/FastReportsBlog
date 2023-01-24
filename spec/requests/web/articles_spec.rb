@@ -6,11 +6,17 @@ RSpec.describe 'Web::Articles' do
   let(:user) { create(:user) }
   let(:article) { build_stubbed(:article, user: :user) }
 
-  it '' do
-    expect(response).to render_template(:index)
+  describe 'GET /index' do
+    it 'renders a successful response' do
+      get articles_url
+      expect(response).to be_successful
+    end
   end
 
-  it '' do
-    expect(response).to render_template(:show)
+  describe 'GET /show' do
+    it 'renders a successful response' do
+      get article_url(article)
+      expect(response).to be_successful
+    end
   end
 end

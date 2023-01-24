@@ -6,13 +6,12 @@ class Web::Admin::ArticlesController < ApplicationController
   def index
     @articles = Article.all
                        .order(created_at: :desc)
-                       .page(page)
-                       .per(per_page)
+                       .page
   end
 
   def show
     @article = Article.find_by(params[:id])
-    redirect_to(@link.url)
+    redirect_to admin_article_path
   end
 
   def new

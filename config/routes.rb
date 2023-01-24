@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :articles, only: %i[index show]
 
     namespace :admin do
+      root 'articles#index'
       resources :articles
     end
 

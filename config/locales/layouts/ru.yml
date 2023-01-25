@@ -1,0 +1,9 @@
+ru:
+  layouts:
+    shared:
+      nav:
+        articles: Все статьи
+        sign_in: Войти
+        sign_up: Зарегистрироваться
+        sign_out: Выйти
+        create_article: Создать статью

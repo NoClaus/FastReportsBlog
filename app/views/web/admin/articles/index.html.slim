@@ -11,7 +11,7 @@ table.table
         td = link_to article.id, edit_admin_article_path(article)
         td = article.title
         td = link_to t('.edit'), edit_admin_article_path(article)
-        td = link_to t('.delete') admin_article_path(article), method: :delete, data: {confirm: 'Are you sure?'}
+        td = link_to t('.delete'), admin_article_path(article), method: :delete, data: {confirm: 'Are you sure?'}
 
         
   tfoot

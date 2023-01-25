@@ -45,13 +45,13 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'POST /create' do
-    before { sign_in user  }
+    before { sign_in user }
 
     context 'with valid parameters' do
       it 'creates a new Article' do
-        expect {
+        expect do
           post admin_articles_url, params: { article: attributes_for(:article) }
-        }.to change(Article, :count).by(1)
+        end.to change(Article, :count).by(1)
       end
 
       it 'redirects to the created article' do
@@ -76,10 +76,10 @@ RSpec.describe 'Web::Admin::Articles' do
 
   describe 'PATCH /update' do
     before { sign_in user  }
-    
 
     context 'with valid parameters' do
       let(:article) { create(:article) }
+
       it 'updates the requested article' do
         patch admin_article_url(article), params: { article: attributes_for(:article, :new_attributes) }
         article.reload
@@ -94,7 +94,6 @@ RSpec.describe 'Web::Admin::Articles' do
 
     context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
- 
         patch admin_article_url(article), params: { article: attributes_for(:article, :invalid) }
         expect(response).to be_successful
       end
@@ -102,13 +101,14 @@ RSpec.describe 'Web::Admin::Articles' do
   end
 
   describe 'DELETE /destroy' do
-    before { sign_in user  }
+    before { sign_in user }
+
     let!(:article) { create(:article) }
+
     it 'destroys the requested article' do
-    
-      expect {
+      expect do
         delete admin_article_url(article)
-      }.to change(Article, :count).by(-1)
+      end.to change(Article, :count).by(-1)
     end
 
     it 'redirects to the articles list' do

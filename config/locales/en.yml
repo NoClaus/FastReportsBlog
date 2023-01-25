@@ -1,12 +1,9 @@
 en:
   web:
-    articles:
+    admin:
       form:
         submit: Create article
       create:
         success: Article was successfully created.
       show:
         all: All articles
-        sign_in: please login
-      new:
-        title: New article

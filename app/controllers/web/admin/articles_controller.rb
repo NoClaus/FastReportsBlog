@@ -27,7 +27,7 @@ class Web::Admin::ArticlesController < ApplicationController
     if @article.save
       redirect_to admin_root_path, notice: t('.success')
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 

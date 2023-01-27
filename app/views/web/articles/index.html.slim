@@ -1,0 +1,11 @@
+
+- @articles.each do |article|
+  .card.mb-3
+    .card-img-top = article.photo
+    .card-header = link_to article.title, article
+    .card-body.card-text = article.body.truncate_words(18)
+    .card-footer
+      span.me-2
+        = time_ago_in_words article.created_at
+
+  = paginate @articles

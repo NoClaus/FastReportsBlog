@@ -3,7 +3,8 @@ en:
     admin:
       form:
         submit: Create article
-      create:
-        success: Article was successfully created.
-      show:
-        all: All articles
+        aricles:
+          create:
+            success: Article was successfully created.
+          show:
+            all: All articles

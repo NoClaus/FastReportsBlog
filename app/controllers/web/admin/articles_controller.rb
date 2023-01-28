@@ -4,8 +4,7 @@ class Web::Admin::ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = Article.all
-                       .order(created_at: :desc)
+    @articles = Article.order(created_at: :desc)
                        .page
   end
 

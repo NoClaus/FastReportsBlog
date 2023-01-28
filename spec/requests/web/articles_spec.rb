@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Web::Articles' do
   let(:user) { create(:user) }
-  let(:article) { build_stubbed(:article) }
+  let(:article) { create(:article) }
 
   describe 'GET /index' do
     it 'renders a successful response' do
@@ -16,7 +16,7 @@ RSpec.describe 'Web::Articles' do
   describe 'GET /show' do
     it 'renders a successful response' do
       get article_url(article)
-      expect(response).to be_successful
+      expect(response).to render_template(:show)
     end
   end
 end

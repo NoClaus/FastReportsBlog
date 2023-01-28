@@ -1,11 +1,12 @@
 .container
-  header.d-flex.flex-wrap.justify-content-center.py-3.mb-4.border-bottom
-    
-    ul.nav
+  .container
+    header.d-flex.flex-wrap.justify-content-center.py-3.mb-4.border-bottom
       - if signed_in?
-          = link_to admin_root_path, class: 'd-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none' do
-            span.fs-4 = t(:title)
+        = link_to articles_path, class: 'd-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none' do
+          span.fs-4 = t(:title)
+        ul.nav.nav-pills
           = link_to t('.create_article'), new_admin_article_path, class: 'nav-link link-dark'
+          = link_to t('.edit_all'), admin_articles_path, class: 'nav-link link-dark'
           = link_to t('.sign_out'), destroy_user_session_path, method: :delete, class: 'nav-link link-dark'
       - else
         = link_to root_path, class: 'd-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none' do

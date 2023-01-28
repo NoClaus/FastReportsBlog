@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-
-	private
+  private
 
   def page
     params.fetch(:page, 1)

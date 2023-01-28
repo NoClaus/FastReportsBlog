@@ -5,7 +5,8 @@ class Web::ArticlesController < ApplicationController
     @time_at = Time.now
     @articles = Article.where("exclusion_date < ?", @time_at)
                        .order(created_at: :desc)
-                       .page
+                       .page(page)
+                       .per(per_page)
   end
 
   def show

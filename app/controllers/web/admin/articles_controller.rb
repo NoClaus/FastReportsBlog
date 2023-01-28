@@ -5,7 +5,8 @@ class Web::Admin::ArticlesController < ApplicationController
 
   def index
     @articles = Article.order(created_at: :desc)
-                       .page
+                       .page(page)
+                       .per(per_page)
   end
 
   def show

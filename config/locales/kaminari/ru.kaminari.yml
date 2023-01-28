@@ -11,8 +11,8 @@ ru:
           other: "Показаны <b>все %{count}</b> %{entry_name}"
   views:
     pagination:
-      first_html: "&laquo; Первая"
-      last_html: "Последняя &raquo;"
-      next_html: "Следующая &rsaquo;"
-      previous_html: "&lsaquo; Предыдущая"
+      first_html: "Первая "
+      last_html: "Последняя"
+      next_html: "Следующая "
+      previous_html: " Предыдущая"
       truncate_html: "&hellip;"

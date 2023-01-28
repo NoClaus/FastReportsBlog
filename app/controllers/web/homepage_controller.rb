@@ -5,7 +5,8 @@ class Web::HomepageController < ApplicationController
     @time_at = Time.now
     @articles = Article.where("exclusion_date < ?", @time_at)
                        .order(created_at: :desc)
-                       .limit(3)  
+                       .limit(3)
+                       
                                           
   end
 end

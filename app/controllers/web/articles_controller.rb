@@ -2,10 +2,11 @@
 
 class Web::ArticlesController < ApplicationController
   def index
-    @articles = Article.all
-                       .where('created_at > exclusion_date')
+    @time_at = Time.zone.now
+    @articles = Article.where('exclusion_date < ?', @time_at)
                        .order(created_at: :desc)
-                       .page
+                       .page(page)
+                       .per(per_page)
   end
 
   def show

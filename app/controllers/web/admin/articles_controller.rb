@@ -4,9 +4,9 @@ class Web::Admin::ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = Article.all
-                       .order(created_at: :desc)
-                       .page
+    @articles = Article.order(created_at: :desc)
+                       .page(page)
+                       .per(per_page)
   end
 
   def show
@@ -27,7 +27,7 @@ class Web::Admin::ArticlesController < ApplicationController
     if @article.save
       redirect_to admin_root_path, notice: t('.success')
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 

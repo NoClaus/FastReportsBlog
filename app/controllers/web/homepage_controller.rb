@@ -2,8 +2,8 @@
 
 class Web::HomepageController < ApplicationController
   def index
-    @articles = Article.all
-                       .where('created_at > exclusion_date')
+    @time_at = Time.zone.now
+    @articles = Article.where('exclusion_date < ?', @time_at)
                        .order(created_at: :desc)
                        .limit(3)
   end

@@ -1,0 +1,5 @@
+h2 = @article.title
+.d-flex.justify-content-between.mb-3.mt-1
+  .post-section
+    span = time_ago_in_words @article.created_at
+p = simple_format @article.body

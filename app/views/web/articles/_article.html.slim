@@ -1,0 +1,20 @@
+.col-lg-6
+  .card.h-100.article
+    = link_to article_path(article), class: 'text-decoration-none link-secondary h-100'
+      .row.h-100
+        .col-md-4.h-100
+          - if article.photo_attachment
+            = image_tag(article.photo, class: 'img-fluid rounded-start')
+          - else
+            .no-img.bg-secondary
+              i.bi.bi-card-image.text-light
+        .col-md-8
+          .card-body.d-flex.flex-column.justify-content-between.h-100
+            h5.card-title = article.title
+            hr
+            p.card-text.text-truncate.flex-grow-1 = article.body
+            p.card-text
+              hr
+              small.text-muted
+                |
+              small.text-muted #{t('.created_at')}: #{l(article.created_at)}

@@ -1,7 +1,10 @@
-= simple_form_for(@article) do |f|
-  = f.input :title, class: 'form-group mb-3'
-  = f.input :body, input_html: { rows: 10 }, class: 'form-group mb-3'
-  = f.input :exclusion_date, as: :datetime, class: 'form-group mb-3'
+= simple_form_for [:admin, @article] do |f|
+  .mb-3
+    = f.input :title, class: 'form-group mb-3'
+  .mb-3
+    = f.input :body, input_html: { rows: 10 }, class: 'form-group mb-3'
+  .mb-3
+    = f.input :exclusion_date, as: :datetime
   .form-group.mb-3
     = f.file_field :photo, class: 'form-control'
   .mt-2

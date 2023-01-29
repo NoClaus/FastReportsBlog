@@ -1,12 +1,11 @@
 en:
-  layouts:
-    shared:
-      nav:
-        articles: All articles
-        edit_all: Edit all atricles
-        sign_in: Sign in
-        sign_up: Sign up
-        sign_out: Log out
-        create_article: Create article
+  shared:
+    nav:
+      articles: All articles
+      edit_all: Edit all atricles
+      sign_in: Sign in
+      sign_up: Sign up
+      sign_out: Log out
+      create_article: Create article
       
 
